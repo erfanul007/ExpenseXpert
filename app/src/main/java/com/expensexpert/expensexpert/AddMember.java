@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.expensexpert.expensexpert.models.Contributors;
+import com.expensexpert.expensexpert.models.DatabaseHelper;
+
 public class AddMember extends AppCompatActivity {
 
     public EditText input_name, input_note;
@@ -45,9 +48,7 @@ public class AddMember extends AppCompatActivity {
             input_name.setText("");
             input_note.setText("");
             Toast.makeText(this, "Member Added", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, SingleTour.class);
-            intent.putExtra("GroupId", GroupId);
-            startActivity(intent);
+            finish();
         }
         else{
             Toast.makeText(this, "Error Occurred", Toast.LENGTH_SHORT).show();

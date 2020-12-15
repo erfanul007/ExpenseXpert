@@ -1,13 +1,11 @@
-package com.expensexpert.expensexpert;
+package com.expensexpert.expensexpert.fragments;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,17 +15,21 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.expensexpert.expensexpert.AddMember;
+import com.expensexpert.expensexpert.models.Member;
+import com.expensexpert.expensexpert.R;
+import com.expensexpert.expensexpert.adapters.MemberAdapter;
+import com.expensexpert.expensexpert.models.Contributors;
+import com.expensexpert.expensexpert.models.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpenseFragment extends Fragment {
+public class MemberFragment extends Fragment {
 
-    private List<Expense> expenseArrayList;
+    private List<Member> memberlist;
     private RecyclerView recyclerView;
-//    private ExpenseAdapter.RecyclerViewClickListener listener;
     private FloatingActionButton fab;
     int GroupId;
 
@@ -35,12 +37,12 @@ public class ExpenseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_expense, container, false);
+        View root = inflater.inflate(R.layout.fragment_members, container, false);
 
 
-        recyclerView = root.findViewById(R.id.expense_list);
-        expenseArrayList = new ArrayList<>();
-        fab = root.findViewById(R.id.add_expense);
+        recyclerView = root.findViewById(R.id.member_list);
+        memberlist = new ArrayList<Member>();
+        fab = root.findViewById(R.id.add_member);
 
         Bundle bundle = this.getArguments();
         GroupId = bundle.getInt("GroupId");
@@ -48,49 +50,43 @@ public class ExpenseFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddExpense.class);
+                Intent intent = new Intent(getContext(), AddMember.class);
                 intent.putExtra("GroupId", GroupId);
                 startActivity(intent);
             }
         });
 
-        setexpenseInfo();
+        setMemberInfo();
         setAdapter();
         return root;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void onResume() {
+        super.onResume();
+        memberlist.clear();
+        setMemberInfo();
+        setAdapter();
+    }
+
     private void setAdapter() {
-//        setOnclickListener();
-        ExpenseAdapter adapter = new ExpenseAdapter(expenseArrayList);
+        MemberAdapter adapter = new MemberAdapter(memberlist);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
     }
 
-//    private void setOnclickListener() {
-//        listener = new ExpenseAdapter.RecyclerViewClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                Intent intent = new Intent(getContext(), ExpenseDtails.class);
-//                intent.putExtra("GroupId", GroupId);
-//                intent.putExtra("ExpenseId", expenseArrayList.get(position).getId());
-//                startActivity(intent);
-//            }
-//        };
-//    }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void setexpenseInfo() {
+    private void setMemberInfo() {
         DatabaseHelper db = new DatabaseHelper(getContext());
-        expenseArrayList = db.get_Expense_active(GroupId);
-    }
+        List<Contributors> everyone = db.get_Contributors(GroupId);
 
-//    public void onClick(View view, int position) {
-//        Log.e("works", "works");
-//        Intent intent = new Intent(getContext(), ExpenseDtails.class);
-//        intent.putExtra("GroupId", GroupId);
-//        intent.putExtra("ExpenseId", expenseArrayList.get(position).getId());
-//        startActivity(intent);
-//    }
+        for(int i=0; i<everyone.size(); i++){
+            double gave = db.get_Expense_Amount(db.get_Contributor_Expense_deactive(GroupId, everyone.get(i).getId()));
+            double spent = db.get_Expense_Amount_div(db.get_Contributor_Expense_active(GroupId, everyone.get(i).getId()));
+            Member member = new Member(everyone.get(i).getId(), everyone.get(i).getName(), gave, spent);
+            memberlist.add(member);
+        }
+    }
 }

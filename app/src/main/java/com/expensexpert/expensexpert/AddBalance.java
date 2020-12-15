@@ -11,6 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.expensexpert.expensexpert.models.Contributors;
+import com.expensexpert.expensexpert.models.DatabaseHelper;
+import com.expensexpert.expensexpert.models.ExGroButors;
+import com.expensexpert.expensexpert.models.Expense;
+
 public class AddBalance extends AppCompatActivity {
     private EditText added_balance;
     private TextView member_name;
@@ -43,7 +48,7 @@ public class AddBalance extends AppCompatActivity {
             return;
         }
         double amount = Double.parseDouble(balance);
-        Expense expense = new Expense(GroupId, "", amount, "", "", false);
+        Expense expense = new Expense(GroupId, "Balance Added", amount, "", "", false);
         DatabaseHelper db = new DatabaseHelper(this);
         boolean success = db.add_Expense(expense);
         if(success==false){
@@ -58,8 +63,6 @@ public class AddBalance extends AppCompatActivity {
         }
         added_balance.setText("");
         Toast.makeText(this, "Added Balance", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, SingleTour.class);
-        intent.putExtra("GroupId", GroupId);
-        startActivity(intent);
+        finish();
     }
 }

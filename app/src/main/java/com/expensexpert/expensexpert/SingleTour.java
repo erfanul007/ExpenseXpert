@@ -10,6 +10,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.expensexpert.expensexpert.fragments.BalanceFragment;
+import com.expensexpert.expensexpert.fragments.ExpenseFragment;
+import com.expensexpert.expensexpert.fragments.MemberFragment;
+import com.expensexpert.expensexpert.models.DatabaseHelper;
+import com.expensexpert.expensexpert.models.Group;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SingleTour extends AppCompatActivity {

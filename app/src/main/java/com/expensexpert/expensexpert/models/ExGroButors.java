@@ -1,4 +1,4 @@
-package com.expensexpert.expensexpert;
+package com.expensexpert.expensexpert.models;
 
 public class ExGroButors {
     private int groupID;

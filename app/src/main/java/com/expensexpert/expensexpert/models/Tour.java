@@ -1,4 +1,4 @@
-package com.expensexpert.expensexpert;
+package com.expensexpert.expensexpert.models;
 
 public class Tour {
     private String title;

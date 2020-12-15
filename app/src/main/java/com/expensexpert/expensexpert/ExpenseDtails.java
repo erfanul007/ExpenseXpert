@@ -8,6 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.expensexpert.expensexpert.models.Contributors;
+import com.expensexpert.expensexpert.models.DatabaseHelper;
+import com.expensexpert.expensexpert.models.Expense;
+
 import java.util.List;
 
 public class ExpenseDtails extends AppCompatActivity {

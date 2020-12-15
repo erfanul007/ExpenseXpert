@@ -12,20 +12,16 @@
         <activity android:name=".ExpenseDtails"></activity>
         <activity
             android:name=".AddGroup"
-            android:label="Add New Group"
-            android:parentActivityName=".MainActivity" />
+            android:label="Add New Group" />
         <activity
             android:name=".AddExpense"
-            android:label="Add New Expense"
-            android:parentActivityName=".SingleTour" />
+            android:label="Add New Expense" />
         <activity
             android:name=".AddBalance"
-            android:label="Add Balance"
-            android:parentActivityName=".SingleTour" />
+            android:label="Add Balance" />
         <activity
             android:name=".AddMember"
-            android:label="Add Member"
-            android:parentActivityName=".SingleTour" />
+            android:label="Add New Member" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -37,8 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SingleTour"
-            android:parentActivityName=".MainActivity" />
+            android:name=".SingleTour" />
     </application>
 
 </manifest>

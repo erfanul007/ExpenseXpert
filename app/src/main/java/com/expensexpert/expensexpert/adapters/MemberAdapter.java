@@ -1,4 +1,4 @@
-package com.expensexpert.expensexpert;
+package com.expensexpert.expensexpert.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.expensexpert.expensexpert.models.Member;
+import com.expensexpert.expensexpert.R;
+
 import java.util.List;
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHolder> {

@@ -14,6 +14,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.expensexpert.expensexpert.models.Contributors;
+import com.expensexpert.expensexpert.models.DatabaseHelper;
+import com.expensexpert.expensexpert.models.ExGroButors;
+import com.expensexpert.expensexpert.models.Expense;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,8 +113,6 @@ public class AddExpense extends AppCompatActivity {
         expense_amount.setText("");
         expense_note.setText("");
         Toast.makeText(this, "Expense added", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, SingleTour.class);
-        intent.putExtra("GroupId", GroupId);
-        startActivity(intent);
+        finish();
     }
 }

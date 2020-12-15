@@ -1,9 +1,8 @@
-package com.expensexpert.expensexpert;
+package com.expensexpert.expensexpert.fragments;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.expensexpert.expensexpert.AddBalance;
+import com.expensexpert.expensexpert.R;
+import com.expensexpert.expensexpert.adapters.BalanceAdapter;
+import com.expensexpert.expensexpert.models.Balance;
+import com.expensexpert.expensexpert.models.Contributors;
+import com.expensexpert.expensexpert.models.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +63,23 @@ public class BalanceFragment extends Fragment {
         return root;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onResume() {
+        super.onResume();
+        balanceArrayList.clear();
+        setBalanceInfo();
+        setAdapter();
+
+        DatabaseHelper db = new DatabaseHelper(getContext());
+        double getamount = db.get_Expense_Amount(db.get_Expense_deactive(GroupId));
+        double getexpense = db.get_Expense_Amount(db.get_Expense_active(GroupId));
+
+        current_balance.setText(String.format("%.2f",getamount-getexpense));
+        current_deposit.setText(String.format("%.2f", getamount));
+        current_expense.setText(String.format("%.2f",getexpense));
+    }
+
     private void setAdapter() {
         setOnclickListener();
         BalanceAdapter adapter = new BalanceAdapter(balanceArrayList, listener);
@@ -92,12 +115,4 @@ public class BalanceFragment extends Fragment {
         }
     }
 
-
-    public void onClick(View view, int position) {
-        Log.e("works", "works");
-        Intent intent = new Intent(getContext(), AddBalance.class);
-        intent.putExtra("GroupId", GroupId);
-        intent.putExtra("ContribId", balanceArrayList.get(position).getId());
-        startActivity(intent);
-    }
 }

@@ -1,4 +1,4 @@
-package com.expensexpert.expensexpert;
+package com.expensexpert.expensexpert.models;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -67,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    boolean add_Group(Group group){
+    public boolean add_Group(Group group){
         ContentValues cv = new ContentValues();
         cv.put(GROUP_COL_NAME, group.getName());
         cv.put(GROUP_COL_NOTE, group.getNote());
@@ -112,7 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    boolean add_Expense(Expense expense){
+    public boolean add_Expense(Expense expense){
         ContentValues cv = new ContentValues();
         cv.put(EXPENSE_COL_GROUPID, expense.getGroupId());
         cv.put(EXPENSE_COL_NAME, expense.getName());
@@ -178,7 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    boolean add_Contributor(Contributors contrib){
+    public boolean add_Contributor(Contributors contrib){
         ContentValues cv = new ContentValues();
         cv.put(CONTRIB_COL_GROUPID, contrib.getGroupId());
         cv.put(CONTRIB_COL_NAME, contrib.getName());
@@ -238,7 +238,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    boolean add_ExGroButors(ExGroButors exGroButors){
+    public boolean add_ExGroButors(ExGroButors exGroButors){
         ContentValues cv = new ContentValues();
         cv.put(EXGROBUT_COL_GROUPID, exGroButors.getGroupID());
         cv.put(EXGROBUT_COL_EXPENSEID, exGroButors.getExpenseID());
@@ -594,7 +594,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnlist;
     }
 
-    int getlastExpenseId(int GroupId){
+    public int getlastExpenseId(int GroupId){
         String qq = Integer.toString(GroupId);
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -614,7 +614,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return -1;
     }
 
-    double get_Expense_Amount(List<Expense> expenseList){
+    public double get_Expense_Amount(List<Expense> expenseList){
         double amount = 0;
         for(int i=0; i<expenseList.size(); i++){
             amount += expenseList.get(i).getAmount();
@@ -623,7 +623,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    double get_Expense_Amount_div(List<Expense> expenseList){
+    public double get_Expense_Amount_div(List<Expense> expenseList){
         double amount = 0;
         for(int i=0; i<expenseList.size(); i++){
             int expenseid = expenseList.get(i).getId();

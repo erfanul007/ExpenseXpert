@@ -3,14 +3,14 @@ package com.expensexpert.expensexpert;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.expensexpert.expensexpert.models.DatabaseHelper;
+import com.expensexpert.expensexpert.models.Group;
 
 public class AddGroup extends AppCompatActivity {
 
@@ -42,6 +42,7 @@ public class AddGroup extends AppCompatActivity {
                 et_name.setText("");
                 et_note.setText("");
                 Toast.makeText(AddGroup.this, "Successfully Saved", Toast.LENGTH_SHORT).show();
+                finish();
             } else {
                 Toast.makeText(AddGroup.this, "Error Occurred", Toast.LENGTH_SHORT).show();
             }
