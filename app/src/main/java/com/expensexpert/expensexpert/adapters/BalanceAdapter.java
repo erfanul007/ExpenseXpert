@@ -1,5 +1,6 @@
 package com.expensexpert.expensexpert.adapters;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,13 @@ public class BalanceAdapter extends RecyclerView.Adapter<BalanceAdapter.MyViewHo
 
         holder.name.setText(name);
         holder.amount.setText(String.format("%.2f",amount));
+
+        if (amount > 0) {
+            holder.amount.setTextColor(Color.parseColor("#00FF00"));
+        }
+        else if (amount < 0) {
+            holder.amount.setTextColor(Color.parseColor("#FF0000"));
+        }
     }
 
     @Override
