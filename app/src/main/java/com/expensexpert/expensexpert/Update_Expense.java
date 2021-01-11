@@ -73,7 +73,15 @@ public class Update_Expense extends AppCompatActivity {
             checkBox.setId(list.get(i).getId());
             checkBox.setText(list.get(i).getName());
             checkBox.setTextSize(20);
-            if(contributors.contains(list.get(i))){
+            int index = -1;
+            for (int j=0; j<contributors.size(); j++) {
+                if (list.get(i).getId() == contributors.get(j).getId()) {
+                    index = j;
+                    break;
+                }
+            }
+            Log.e("index", Integer.toString(index));
+            if(index != -1){
                 Log.e("Contrib Name: ", list.get(i).getName());
                 checkBox.setChecked(true);
                 checkList.add(list.get(i).getId());

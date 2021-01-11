@@ -57,7 +57,7 @@ public class ExpenseDtails extends AppCompatActivity {
     }
 
     public void UpdateExpense(View view) {
-        Intent intent = new Intent(this, Update_Expense.class);
+        Intent intent = new Intent(getApplicationContext(), Update_Expense.class);
         intent.putExtra("GroupId", GroupId);
         intent.putExtra("ExpenseId", ExpenseId);
         startActivity(intent);
