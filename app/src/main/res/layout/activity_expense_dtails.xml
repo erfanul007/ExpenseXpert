@@ -7,68 +7,148 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="Title: "
+                android:textSize="20dp"
+                />
 
-        <TextView
-            android:id="@+id/expense_details_name"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/expense_details_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Name"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/expense_details_amount"
-            android:layout_width="match_parent"
+            >
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="Amount: "
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:id="@+id/expense_details_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expense_details_name"
+                android:text="Amount"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_below="@+id/expense_details_name"
-            android:text="Amount"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/expense_details_category"
-            android:layout_width="match_parent"
+            >
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="category: "
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:id="@+id/expense_details_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expense_details_amount"
+                android:text="Category"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_below="@+id/expense_details_amount"
-            android:text="Category"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/expense_details_note"
-            android:layout_width="match_parent"
+            >
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="note: "
+                android:textSize="20dp"
+                />
+            <TextView
+                android:id="@+id/expense_details_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expense_details_category"
+                android:text="Note"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_below="@+id/expense_details_category"
-            android:text="Note"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/expense_details_date"
-            android:layout_width="match_parent"
+            >
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="Created at: "
+                android:textSize="20dp"
+                />
+            <TextView
+                android:id="@+id/expense_details_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expense_details_note"
+                android:text="Date"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_below="@+id/expense_details_note"
-            android:text="Date"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/expense_details_contrib"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_below="@+id/expense_details_date"
-            android:text="Contributors"
-            android:textSize="20dp"/>
+            >
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="Contributors: "
+                android:textSize="20dp"
+                />
+            <TextView
+                android:id="@+id/expense_details_contrib"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expense_details_date"
+                android:text="Contributors"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+        </LinearLayout>
 
         <Button
             android:onClick="UpdateExpense"
@@ -87,7 +167,7 @@
             android:textAllCaps="false"
             android:textSize="20dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
 
 
     </LinearLayout>

@@ -16,11 +16,12 @@ import java.util.List;
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHolder> {
 
     private List<Member> memberlist;
+    private MemberAdapter.RecyclerViewClickListener listener;
 
-    public MemberAdapter(List<Member> Memberlist) {
+    public MemberAdapter(List<Member> Memberlist, MemberAdapter.RecyclerViewClickListener listener) {
         this.memberlist = Memberlist;
+        this.listener = listener;
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull MemberAdapter.MyViewHolder holder, int position) {
@@ -38,7 +39,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHold
         return memberlist.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView name, balance, expense;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -46,6 +47,12 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHold
             name = itemView.findViewById(R.id.list_member_name);
             expense = itemView.findViewById(R.id.list_member_expense);
             balance = itemView.findViewById(R.id.list_member_balance);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.onClick(v, getAdapterPosition());
         }
     }
 
@@ -55,6 +62,10 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHold
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_item, parent, false);
 
         return new MyViewHolder(itemView);
+    }
+
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
     }
 
 }

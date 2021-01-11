@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.expensexpert.expensexpert.AddMember;
+import com.expensexpert.expensexpert.ExpenseDtails;
+import com.expensexpert.expensexpert.MemberDetails;
+import com.expensexpert.expensexpert.adapters.ExpenseAdapter;
 import com.expensexpert.expensexpert.models.Member;
 import com.expensexpert.expensexpert.R;
 import com.expensexpert.expensexpert.adapters.MemberAdapter;
@@ -31,6 +34,7 @@ public class MemberFragment extends Fragment {
     private List<Member> memberlist;
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
+    private MemberAdapter.RecyclerViewClickListener listener;
     int GroupId;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -70,11 +74,24 @@ public class MemberFragment extends Fragment {
     }
 
     private void setAdapter() {
-        MemberAdapter adapter = new MemberAdapter(memberlist);
+        setOnclickListener();
+        MemberAdapter adapter = new MemberAdapter(memberlist, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+    }
+
+    private void setOnclickListener() {
+        listener = new MemberAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(getContext(), MemberDetails.class);
+                intent.putExtra("GroupId", GroupId);
+                intent.putExtra("MemberId", memberlist.get(position).getId());
+                startActivity(intent);
+            }
+        };
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

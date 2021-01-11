@@ -61,7 +61,7 @@ public class Update_Expense extends AppCompatActivity {
         expense_note.setText(expense_p.getNote());
 
         List<Contributors> contributors = db.get_Expense_Contributors(GroupId, ExpenseId);
-        Log.e("Contrib Size: ", Integer.toString(contributors.size()));
+//        Log.e("Contrib Size: ", Integer.toString(contributors.size()));
 
 
 
@@ -80,9 +80,9 @@ public class Update_Expense extends AppCompatActivity {
                     break;
                 }
             }
-            Log.e("index", Integer.toString(index));
+//            Log.e("index", Integer.toString(index));
             if(index != -1){
-                Log.e("Contrib Name: ", list.get(i).getName());
+//                Log.e("Contrib Name: ", list.get(i).getName());
                 checkBox.setChecked(true);
                 checkList.add(list.get(i).getId());
             }

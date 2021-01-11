@@ -43,17 +43,17 @@ public class ExpenseDtails extends AppCompatActivity {
 //        Log.e("GroupId ID",Integer.toString(GroupId));
         Expense expense = db.get_Expense_specific(GroupId, ExpenseId);
         List<Contributors> everyone = db.get_Expense_Contributors(GroupId, ExpenseId);
-        name.setText("Title: "+expense.getName());
-        amount.setText("Amount: "+ String.format("%.2f",expense.getAmount()));
-        category.setText("Category: "+expense.getCategory());
-        note.setText("Note: "+expense.getNote());
-        date.setText("Created at: "+ String.valueOf(expense.getCreatedate()));
+        name.setText(expense.getName());
+        amount.setText(String.format("%.2f",expense.getAmount()));
+        category.setText(expense.getCategory());
+        note.setText(expense.getNote());
+        date.setText(String.valueOf(expense.getCreatedate()));
         String memberlist="";
         for(int i=0; i<everyone.size(); i++){
             if(i>0) memberlist+=", ";
             memberlist += everyone.get(i).getName();
         }
-        members.setText("Contributors: "+memberlist);
+        members.setText(memberlist);
     }
 
     public void UpdateExpense(View view) {
