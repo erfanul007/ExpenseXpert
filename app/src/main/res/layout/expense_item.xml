@@ -22,7 +22,7 @@
             >
 
             <TextView
-                android:id="@+id/expense_title"
+                android:id="@+id/expense_title_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Expense Title"
@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="$ 100"
-                android:id="@+id/member_balance"
-                android:layout_below="@+id/expense_title" />
+                android:id="@+id/expense_balance_a"
+                android:layout_below="@+id/expense_title_a" />
 
 
         </RelativeLayout>

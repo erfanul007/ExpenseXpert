@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.expensexpert.expensexpert.AddExpense;
+import com.expensexpert.expensexpert.ExpenseDtails;
 import com.expensexpert.expensexpert.R;
 import com.expensexpert.expensexpert.adapters.ExpenseAdapter;
 import com.expensexpert.expensexpert.models.DatabaseHelper;
@@ -29,7 +30,7 @@ public class ExpenseFragment extends Fragment {
 
     private List<Expense> expenseArrayList;
     private RecyclerView recyclerView;
-//    private ExpenseAdapter.RecyclerViewClickListener listener;
+    private ExpenseAdapter.RecyclerViewClickListener listener;
     private FloatingActionButton fab;
     int GroupId;
 
@@ -62,8 +63,8 @@ public class ExpenseFragment extends Fragment {
     }
 
     private void setAdapter() {
-//        setOnclickListener();
-        ExpenseAdapter adapter = new ExpenseAdapter(expenseArrayList);
+        setOnclickListener();
+        ExpenseAdapter adapter = new ExpenseAdapter(expenseArrayList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -77,17 +78,17 @@ public class ExpenseFragment extends Fragment {
         setAdapter();
     }
 
-//    private void setOnclickListener() {
-//        listener = new ExpenseAdapter.RecyclerViewClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                Intent intent = new Intent(getContext(), ExpenseDtails.class);
-//                intent.putExtra("GroupId", GroupId);
-//                intent.putExtra("ExpenseId", expenseArrayList.get(position).getId());
-//                startActivity(intent);
-//            }
-//        };
-//    }
+    private void setOnclickListener() {
+        listener = new ExpenseAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(getContext(), ExpenseDtails.class);
+                intent.putExtra("GroupId", GroupId);
+                intent.putExtra("ExpenseId", expenseArrayList.get(position).getId());
+                startActivity(intent);
+            }
+        };
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setexpenseInfo() {

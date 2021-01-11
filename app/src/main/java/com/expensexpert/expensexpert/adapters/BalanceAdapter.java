@@ -24,7 +24,6 @@ public class BalanceAdapter extends RecyclerView.Adapter<BalanceAdapter.MyViewHo
         this.listener = listener;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull BalanceAdapter.MyViewHolder holder, int position) {
         String name = balancelist.get(position).getName();

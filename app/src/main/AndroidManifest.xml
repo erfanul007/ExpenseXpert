@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseXpert">
-        <activity android:name=".ExpenseDtails"></activity>
+        <activity android:name=".Update_Expense"></activity>
+        <activity android:name=".ExpenseDtails" />
         <activity
             android:name=".AddGroup"
             android:label="Add New Group" />
@@ -32,8 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SingleTour" />
+        <activity android:name=".SingleTour" />
     </application>
 
 </manifest>

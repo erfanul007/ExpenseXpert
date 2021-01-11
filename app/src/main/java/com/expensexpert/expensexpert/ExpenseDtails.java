@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.expensexpert.expensexpert.models.Contributors;
 import com.expensexpert.expensexpert.models.DatabaseHelper;
@@ -36,18 +39,37 @@ public class ExpenseDtails extends AppCompatActivity {
         ExpenseId = getgroupid.getIntExtra("ExpenseId", 1);
 
         DatabaseHelper db = new DatabaseHelper(this);
+//        Log.e("Expense ID",Integer.toString(ExpenseId));
+//        Log.e("GroupId ID",Integer.toString(GroupId));
         Expense expense = db.get_Expense_specific(GroupId, ExpenseId);
         List<Contributors> everyone = db.get_Expense_Contributors(GroupId, ExpenseId);
         name.setText("Title: "+expense.getName());
         amount.setText("Amount: "+ String.format("%.2f",expense.getAmount()));
         category.setText("Category: "+expense.getCategory());
         note.setText("Note: "+expense.getNote());
-        date.setText("Updated at: "+ String.valueOf(expense.getCreatedate()));
+        date.setText("Created at: "+ String.valueOf(expense.getCreatedate()));
         String memberlist="";
         for(int i=0; i<everyone.size(); i++){
             if(i>0) memberlist+=", ";
             memberlist += everyone.get(i).getName();
         }
         members.setText("Contributors: "+memberlist);
+    }
+
+    public void UpdateExpense(View view) {
+        Intent intent = new Intent(this, Update_Expense.class);
+        intent.putExtra("GroupId", GroupId);
+        intent.putExtra("ExpenseId", ExpenseId);
+        startActivity(intent);
+        finish();
+    }
+
+    public void DeleteExpense(View view) {
+        DatabaseHelper db = new DatabaseHelper(this);
+        db.delete_ExGroButors_byexpense(ExpenseId);
+        db.delete_Expense(ExpenseId);
+
+        Toast.makeText(this, "Expense Deleted", Toast.LENGTH_LONG).show();
+        finish();
     }
 }

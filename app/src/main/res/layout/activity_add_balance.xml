@@ -14,7 +14,7 @@
         android:text="Add Balance for Member"
         android:textSize="25sp"
         android:padding="10dp"
-        android:textColor="#12A89D"
+        android:textColor="@color/teal_700"
         android:layout_marginBottom="10dp" />
 
     <TextView
@@ -30,7 +30,7 @@
 
     <EditText
         android:id="@+id/add_member_balance"
-        android:inputType="numberDecimal"
+        android:inputType="numberSigned"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"

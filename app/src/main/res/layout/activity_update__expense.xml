@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".AddExpense">
+    tools:context=".Update_Expense">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +22,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/new_expense_title"
+            android:id="@+id/new_expense_title_u"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
@@ -32,7 +31,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/new_expense_amount"
+            android:id="@+id/new_expense_amount_u"
             android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +41,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/new_expense_category"
+            android:id="@+id/new_expense_category_u"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
@@ -51,7 +50,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/new_expense_note"
+            android:id="@+id/new_expense_note_u"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
@@ -81,7 +80,7 @@
             />
 
         <LinearLayout
-            android:id="@+id/checkbox_container"
+            android:id="@+id/checkbox_container_u"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
@@ -101,14 +100,13 @@
             app:cardElevation="15dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/add_new_expense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#12A89D"
-                android:onClick="addExpense"
+                android:onClick="updateExpense"
                 android:padding="10dp"
-                android:text="Add Expense"
+                android:text="Update"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
         </androidx.cardview.widget.CardView>

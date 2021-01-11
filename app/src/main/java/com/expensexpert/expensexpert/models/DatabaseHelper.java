@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -130,7 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    boolean update_expense(Expense expense){
+    public boolean update_Expense(Expense expense){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(EXPENSE_COL_ID, expense.getId());
@@ -148,8 +149,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    boolean delete_expense(Expense expense){
-        String eqq = Integer.toString(expense.getId());
+    public boolean delete_Expense(int expenseid){
+        String eqq = Integer.toString(expenseid);
         SQLiteDatabase db = this.getWritableDatabase();
         String querystring = "DELETE FROM " + EXPENSE_TABLE + " WHERE " + EXPENSE_COL_ID + " = "+ eqq;
         Cursor cursor = db.rawQuery(querystring, null);
@@ -267,7 +268,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    boolean delete_ExGroButors_byexpense(int expenseid){
+    public boolean delete_ExGroButors_byexpense(int expenseid){
         String qq = Integer.toString(expenseid);
         SQLiteDatabase db = this.getWritableDatabase();
         String querystring = "DELETE FROM " + EXGROBUT_TABLE + " WHERE " + EXGROBUT_COL_EXPENSEID + " = "+ qq;
@@ -444,7 +445,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String expensecategory = cursor.getString(cursor.getColumnIndex(EXPENSE_COL_CATEGORY));
             String expensenote = cursor.getString(cursor.getColumnIndex(EXPENSE_COL_NOTE));
             boolean expensestatus = cursor.getInt(cursor.getColumnIndex(EXPENSE_COL_ISEXPENSE)) == 1;
-            LocalDateTime createdate = LocalDateTime.parse(cursor.getString(cursor.getColumnIndex(CONTRIB_COL_CREATEDATE)));
+//            Log.e("expense name: ",expensename);
+            LocalDateTime createdate = LocalDateTime.parse(cursor.getString(cursor.getColumnIndex(EXPENSE_COL_CREATEDATE)));
+//            Log.e("date : ", createdate.toString());
 
             expense = new Expense(expenseid, groupid, expensename, expensamount, expensecategory, expensenote, expensestatus, createdate);
         }

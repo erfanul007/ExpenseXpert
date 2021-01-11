@@ -17,7 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#27D3C6"
+            android:background="#12A89D"
             android:gravity="center">
 
 
@@ -28,7 +28,7 @@
                 android:text="Current Balance"
                 android:textAlignment="center"
                 android:textColor="#F0F0F0"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/current_balance"
@@ -37,6 +37,7 @@
                 android:layout_below="@+id/current_balance_label"
                 android:layout_gravity="center"
                 android:text="$ 500"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
@@ -70,6 +71,7 @@
                 android:layout_below="@+id/current_deposit_text"
                 android:gravity="left"
                 android:text="$ 500"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -81,6 +83,7 @@
                 android:layout_below="@+id/current_expense_text"
                 android:gravity="right"
                 android:text="$ 500"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 

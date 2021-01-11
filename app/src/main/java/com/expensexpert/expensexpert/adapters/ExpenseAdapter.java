@@ -16,13 +16,12 @@ import java.util.List;
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHolder> {
 
     private List<Expense> expenselist;
-//    private ExpenseAdapter.RecyclerViewClickListener listener;
+    private ExpenseAdapter.RecyclerViewClickListener listener;
 
-    public ExpenseAdapter(List<Expense> expenselist) {
+    public ExpenseAdapter(List<Expense> expenselist, ExpenseAdapter.RecyclerViewClickListener listener) {
         this.expenselist = expenselist;
-//        this.listener = listener;
+        this.listener = listener;
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ExpenseAdapter.MyViewHolder holder, int position) {
@@ -38,27 +37,31 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
         return expenselist.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView title, amount;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.member_name);
-            amount = itemView.findViewById(R.id.member_balance);
-//            itemView.setOnClickListener(this);
+            title = itemView.findViewById(R.id.expense_title_a);
+            amount = itemView.findViewById(R.id.expense_balance_a);
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            listener.onClick(v, getAdapterPosition());
+        }
     }
 
     @NonNull
     @Override
     public ExpenseAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.balance_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.expense_item, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
-//    public interface RecyclerViewClickListener {
-//        void onClick(View view, int position);
-//    }
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
+    }
 }
