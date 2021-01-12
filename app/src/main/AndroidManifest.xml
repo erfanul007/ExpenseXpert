@@ -8,9 +8,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseXpert">
-        <activity android:name=".MemberDetails"></activity>
-        <activity android:name=".Update_Expense" />
-        <activity android:name=".ExpenseDtails" />
+        <activity android:name=".MemberDetails" android:label="Member Details" />
+        <activity android:name=".Update_Expense" android:label="Update Expense" />
+        <activity android:name=".ExpenseDtails" android:label="Expense Details" />
         <activity
             android:name=".AddGroup"
             android:label="Add New Group" />

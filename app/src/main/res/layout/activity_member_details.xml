@@ -23,7 +23,9 @@
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="Name: "
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
                 />
 
             <TextView
@@ -31,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"/>
         </LinearLayout>
 
@@ -45,8 +47,11 @@
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:text="note: "
-                android:textSize="20dp"
+                android:text="Note: "
+
+                android:textColor="#12A89D"
+                android:textStyle="bold"
+                android:textSize="20sp"
                 />
             <TextView
                 android:id="@+id/member_details_note"
@@ -55,7 +60,7 @@
                 android:layout_below="@+id/member_details_category"
                 android:text="Note"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -68,8 +73,10 @@
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:text="Created at: "
-                android:textSize="20dp"
+                android:text="Created at:"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
+                android:textSize="20sp"
                 />
             <TextView
                 android:id="@+id/member_details_date"
@@ -78,7 +85,7 @@
                 android:layout_below="@+id/expense_details_note"
                 android:text="Date"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <TextView
@@ -89,8 +96,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/expense_details_note"
-            android:text="Expense Details:"
-            android:textSize="20dp"/>
+            android:text="Balance Updates:"
+            android:textStyle="bold"
+            android:textColor="#12A89D"
+            android:textSize="22sp"/>
 
         <TextView
             android:id="@+id/member_details_list"
@@ -101,8 +110,30 @@
             android:layout_below="@+id/expense_details_details"
             android:text="Expense Details:"
             android:textColor="@color/black"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
 
+        <TextView
+            android:id="@+id/member_details_expenese"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expense_details_note"
+            android:text="Expeneses:"
+            android:textStyle="bold"
+            android:textColor="#12A89D"
+            android:textSize="22sp"/>
+        <TextView
+            android:id="@+id/member_details_expenese_list"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expense_details_details"
+            android:text="Expenses"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 

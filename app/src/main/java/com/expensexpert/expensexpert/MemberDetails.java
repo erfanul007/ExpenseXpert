@@ -12,10 +12,11 @@ import com.expensexpert.expensexpert.models.Contributors;
 import com.expensexpert.expensexpert.models.DatabaseHelper;
 import com.expensexpert.expensexpert.models.Expense;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class MemberDetails extends AppCompatActivity {
-    TextView name, note, date, list;
+    TextView name, note, date, list, expense_list;
     int GroupId, MemberId;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -27,6 +28,7 @@ public class MemberDetails extends AppCompatActivity {
         note = findViewById(R.id.member_details_note);
         date = findViewById(R.id.member_details_date);
         list = findViewById(R.id.member_details_list);
+        expense_list = findViewById(R.id.member_details_expenese_list);
 
         Intent getgroupid = getIntent();
         GroupId = getgroupid.getIntExtra("GroupId", 1);
@@ -38,33 +40,37 @@ public class MemberDetails extends AppCompatActivity {
 
         List<Expense> expenselistd = db.get_Contributor_Expense_deactive(GroupId, MemberId);
         List<Expense> expenselista = db.get_Contributor_Expense_active(GroupId, MemberId);
-        String s = "";
+        String balances = "", expenses = "";
         for(int i=0; i<expenselistd.size(); i++){
-            s += expenselistd.get(i).getName();
-            s += ": ";
+            balances += expenselistd.get(i).getName();
+            balances += ": ";
             List<Contributors> lst = db.get_Expense_Contributors(GroupId, expenselistd.get(i).getId());
             double val = expenselistd.get(i).getAmount()/lst.size();
-            s += String.format("%.2f",val);
-            s += "\nDate: ";
-            s += expenselistd.get(i).getCreatedate().toString();
-            s+="\n";
-            s+="\n";
+            balances += String.format("%.2f",val);
+            balances += "\nTime: ";
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy, hh:mm a");
+            balances += expenselistd.get(i).getCreatedate().format(formatter);
+            balances+="\n";
+            balances+="\n";
         }
         for(int i=0; i<expenselista.size(); i++){
-            s += expenselista.get(i).getName();
-            s += "\nspent: ";
+            expenses += expenselista.get(i).getName();
+            expenses += "\nspent: ";
             List<Contributors> lst = db.get_Expense_Contributors(GroupId, expenselista.get(i).getId());
             double val = expenselista.get(i).getAmount()/lst.size();
-            s += String.format("%.2f",val);
-            s += "\nDate: ";
-            s += expenselista.get(i).getCreatedate().toString();
-            s += "\n";
-            s+="\n";
+            expenses += String.format("%.2f",val);
+            expenses += "\nTime: ";
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy, hh:mm a");
+            expenses += expenselista.get(i).getCreatedate().format(formatter);
+            expenses += "\n";
+            expenses +="\n";
         }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy, hh:mm a");
         name.setText(contributors.getName());
         note.setText(contributors.getNote());
-        date.setText(contributors.getCreatedate().toString());
-        list.setText(s);
-
+        date.setText(contributors.getCreatedate().format(formatter));
+        list.setText(balances);
+        expense_list.setText(expenses);
     }
 }

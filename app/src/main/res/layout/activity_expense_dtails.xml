@@ -160,7 +160,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="20dp"
             app:cardCornerRadius="30dp"
-            app:cardElevation="15dp"
+            app:cardElevation="18dp"
             android:background="#FF0000"
             android:foreground="?android:attr/selectableItemBackground"
             >
@@ -174,7 +174,7 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:onClick="UpdateExpense"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="50sp"
                     android:text="Update"
                     android:textColor="@color/white"
@@ -184,7 +184,7 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:onClick="DeleteExpense"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="50sp"
                     android:text="Delete"
                     android:background="#FF0000"
