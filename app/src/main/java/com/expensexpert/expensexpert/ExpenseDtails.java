@@ -15,6 +15,7 @@ import com.expensexpert.expensexpert.models.Contributors;
 import com.expensexpert.expensexpert.models.DatabaseHelper;
 import com.expensexpert.expensexpert.models.Expense;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ExpenseDtails extends AppCompatActivity {
@@ -47,7 +48,8 @@ public class ExpenseDtails extends AppCompatActivity {
         amount.setText(String.format("%.2f",expense.getAmount()));
         category.setText(expense.getCategory());
         note.setText(expense.getNote());
-        date.setText(String.valueOf(expense.getCreatedate()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy, hh:mm a");
+        date.setText(expense.getCreatedate().format(formatter));
         String memberlist="";
         for(int i=0; i<everyone.size(); i++){
             if(i>0) memberlist+=", ";

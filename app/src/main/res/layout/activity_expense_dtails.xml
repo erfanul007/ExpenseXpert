@@ -22,7 +22,9 @@
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="Title: "
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
                 />
 
             <TextView
@@ -30,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"/>
         </LinearLayout>
 
@@ -45,7 +47,9 @@
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="Amount: "
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
                 />
 
             <TextView
@@ -55,7 +59,7 @@
                 android:layout_below="@+id/expense_details_name"
                 android:text="Amount"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -68,8 +72,10 @@
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:text="category: "
-                android:textSize="20dp"
+                android:text="Category: "
+                android:textSize="20sp"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
                 />
 
             <TextView
@@ -79,7 +85,7 @@
                 android:layout_below="@+id/expense_details_amount"
                 android:text="Category"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -92,8 +98,10 @@
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:text="note: "
-                android:textSize="20dp"
+                android:text="Note: "
+                android:textSize="20sp"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
                 />
             <TextView
                 android:id="@+id/expense_details_note"
@@ -102,7 +110,7 @@
                 android:layout_below="@+id/expense_details_category"
                 android:text="Note"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -116,7 +124,9 @@
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="Created at: "
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
                 />
             <TextView
                 android:id="@+id/expense_details_date"
@@ -125,7 +135,7 @@
                 android:layout_below="@+id/expense_details_note"
                 android:text="Date"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -139,7 +149,9 @@
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="Contributors: "
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:textColor="#12A89D"
+                android:textStyle="bold"
                 />
             <TextView
                 android:id="@+id/expense_details_contrib"
@@ -148,7 +160,7 @@
                 android:layout_below="@+id/expense_details_date"
                 android:text="Contributors"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
 
